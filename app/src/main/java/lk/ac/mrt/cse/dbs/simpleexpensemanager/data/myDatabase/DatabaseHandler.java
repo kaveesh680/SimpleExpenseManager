@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class MyDatabaseHandler extends SQLiteOpenHelper {
+public class DatabaseHandler extends SQLiteOpenHelper {
     private final static String dbName = "180369L";
     private final static int dbVersion = 1;
     private final static String accountTable = "account_table";
@@ -21,7 +21,7 @@ public class MyDatabaseHandler extends SQLiteOpenHelper {
     private final static String typeExpense = "EXPENSE";
     private final static String typeIncome = "INCOME";
 
-    public MyDatabaseHandler(Context context) {
+    public DatabaseHandler(Context context) {
         super(context, dbName, null, dbVersion);
     }
     public static String getDbName() { return dbName; }

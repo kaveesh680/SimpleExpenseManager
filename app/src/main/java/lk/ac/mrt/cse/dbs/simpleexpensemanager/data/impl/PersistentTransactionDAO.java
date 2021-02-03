@@ -15,36 +15,36 @@ import java.util.Locale;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.TransactionDAO;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.model.ExpenseType;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.model.Transaction;
-import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.myDatabase.MyDatabaseHandler;
+import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.myDatabase.DatabaseHandler;
 
 public class PersistentTransactionDAO implements TransactionDAO {
-    private MyDatabaseHandler dbHandler;
+    private DatabaseHandler databseHandler;
     private DateFormat dateFormat;
 
-    public PersistentTransactionDAO(MyDatabaseHandler dbHandler) {
-        this.dbHandler = dbHandler;
+    public PersistentTransactionDAO(DatabaseHandler dbHandler) {
+        this.databseHandler = dbHandler;
         this.dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
     }
     @Override
     public void logTransaction(Date date, String accountNo, ExpenseType expenseType, double amount) {
-        SQLiteDatabase db= dbHandler.getWritableDatabase();
+        SQLiteDatabase db= databseHandler.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(dbHandler.getTransactionDate(), this.dateFormat.format(date));
-        contentValues.put(dbHandler.getTransactionAccountNo(), accountNo);
-        contentValues.put(dbHandler.getTransactionType(), expenseType.toString());
-        contentValues.put(dbHandler.getTransactionAmount(), amount);
+        contentValues.put(databseHandler.getTransactionDate(), this.dateFormat.format(date));
+        contentValues.put(databseHandler.getTransactionAccountNo(), accountNo);
+        contentValues.put(databseHandler.getTransactionType(), expenseType.toString());
+        contentValues.put(databseHandler.getTransactionAmount(), amount);
 
         //insert new row to transaction table
-        db.insert(dbHandler.getTransactionTable(), null, contentValues);
+        db.insert(databseHandler.getTransactionTable(), null, contentValues);
     }
 
     @Override
     public List<Transaction> getAllTransactionLogs() {
-        SQLiteDatabase db = dbHandler.getReadableDatabase();
+        SQLiteDatabase database = databseHandler.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery(
-                "SELECT * FROM " + dbHandler.getTransactionTable() + " ORDER BY " + dbHandler.getTransactionDate() + " DESC ",
+        Cursor cursor = database.rawQuery(
+                "SELECT * FROM " + databseHandler.getTransactionTable() + " ORDER BY " + databseHandler.getTransactionDate() + " DESC ",
                 null
         );
 
@@ -71,10 +71,10 @@ public class PersistentTransactionDAO implements TransactionDAO {
 
     @Override
     public List<Transaction> getPaginatedTransactionLogs(int limit) {
-        SQLiteDatabase db = dbHandler.getReadableDatabase();
+        SQLiteDatabase db = databseHandler.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(
-                "SELECT * FROM " + dbHandler.getTransactionTable() + " ORDER BY " + dbHandler.getTransactionDate() + " DESC " +
+                "SELECT * FROM " + databseHandler.getTransactionTable() + " ORDER BY " + databseHandler.getTransactionDate() + " DESC " +
                         " LIMIT ?;"
                 , new String[]{Integer.toString(limit)}
         );

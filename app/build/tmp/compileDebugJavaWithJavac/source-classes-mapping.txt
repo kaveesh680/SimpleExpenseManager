@@ -41,5 +41,5 @@ lk/ac/mrt/cse/dbs/simpleexpensemanager/control/InMemoryDemoExpenseManager.java
 lk/ac/mrt/cse/dbs/simpleexpensemanager/data/impl/InMemoryAccountDAO.java
  lk.ac.mrt.cse.dbs.simpleexpensemanager.data.impl.InMemoryAccountDAO
  lk.ac.mrt.cse.dbs.simpleexpensemanager.data.impl.InMemoryAccountDAO$1
-lk/ac/mrt/cse/dbs/simpleexpensemanager/data/myDatabase/MyDatabaseHandler.java
- lk.ac.mrt.cse.dbs.simpleexpensemanager.data.myDatabase.MyDatabaseHandler
+lk/ac/mrt/cse/dbs/simpleexpensemanager/data/myDatabase/DatabaseHandler.java
+ lk.ac.mrt.cse.dbs.simpleexpensemanager.data.myDatabase.DatabaseHandler

@@ -7,14 +7,14 @@ import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.AccountDAO;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.TransactionDAO;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.impl.PersistentAccountDAO;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.impl.PersistentTransactionDAO;
-import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.myDatabase.MyDatabaseHandler;
+import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.myDatabase.DatabaseHandler;
 
 public class PersistentExpenseManager extends ExpenseManager{
 
-    private MyDatabaseHandler dbHandler;
+    private DatabaseHandler dbHandler;
 
     public PersistentExpenseManager(Context context) throws ExpenseManagerException {
-        this.dbHandler = new MyDatabaseHandler(context);
+        this.dbHandler = new DatabaseHandler(context);
         setup();
     }
     @Override

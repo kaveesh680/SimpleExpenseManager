@@ -11,14 +11,14 @@ import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.AccountDAO;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.exception.InvalidAccountException;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.model.Account;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.model.ExpenseType;
-import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.myDatabase.MyDatabaseHandler;
+import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.myDatabase.DatabaseHandler;
 
 public class PersistentAccountDAO implements AccountDAO {
 
-    private MyDatabaseHandler dbHandler;
+    private DatabaseHandler dbHandler;
 
-    public PersistentAccountDAO(MyDatabaseHandler dbHandler) {
-        this.dbHandler = dbHandler;
+    public PersistentAccountDAO(DatabaseHandler databaseHandler) {
+        this.dbHandler = databaseHandler;
     }
 
     @Override
